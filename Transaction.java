@@ -14,7 +14,7 @@ public class Transaction implements Serializable{
 	public void setID()
 	{
 		byte[] hash = null;
-		byte[] b = new Serialize().toByteArray(this);
+		byte[] b =Serialize.toByteArray(this);
 		
 //		System.out.println(ByteToString.bytes2String(b));
 

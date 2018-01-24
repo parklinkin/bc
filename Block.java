@@ -8,7 +8,7 @@ public class Block implements Serializable
 {
 	private long timeStamp;							// timestamp of this block
 	private ArrayList <Transaction> transactions;	// transactions in this block
-	private byte[] prevBockHash;			//hash of previous block
+	private byte[] prevBlockHash;			//hash of previous block
 	private byte[] hash;					// hash of this block
 	private long nonce;								//counter
 	
@@ -16,7 +16,7 @@ public class Block implements Serializable
 	
 	public byte[] serialize()
 	{
-		byte[] b = new Serialize().toByteArray((Object)this);
+		byte[] b = Serialize.toByteArray((Object)this);
 		return b;
 	}
 	
@@ -39,7 +39,7 @@ public class Block implements Serializable
 		this.transactions = new ArrayList <Transaction>();
 		for(Transaction x:transactions)
 			this.transactions.add(x);
-		this.prevBockHash = prevBlockHash;
+		this.prevBlockHash = prevBlockHash;
 		hash = new byte[]{};
 		nonce = 0;
 		
@@ -60,7 +60,7 @@ public class Block implements Serializable
 	
 	public static Block deserialize(byte[] b)
 	{
-		Block block = (Block) new Serialize().toObject(b);
+		Block block = (Block) Serialize.toObject(b);
 		return block;		
 	}
 
@@ -68,12 +68,20 @@ public class Block implements Serializable
 		return timeStamp;
 	}
 
-	public byte[] getPrevBockHash() {
-		return prevBockHash;
+	public byte[] getPrevBlockHash() {
+		return prevBlockHash;
 	}
 
 	public long getNonce() {
 		return nonce;
+	}
+
+	public byte[] getHash() {
+		return hash;
+	}
+
+	public ArrayList<Transaction> getTransactions() {
+		return transactions;
 	}
 	
 }

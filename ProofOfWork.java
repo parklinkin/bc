@@ -22,7 +22,7 @@ public class ProofOfWork {
 	}
 	public byte[] prepareData(long nonce)
 	{
-		byte[] preDataPrevBlockHash = block.getPrevBockHash();
+		byte[] preDataPrevBlockHash = block.getPrevBlockHash();
 		byte[] preDataHashTransactions = block.hashTransactions();
 		byte[] preDataTimeStamp = ByteTrans.long2bytes(block.getTimeStamp());
 		byte[] preDataTargetBitsByte = ByteTrans.int2bytes(targetbits);
